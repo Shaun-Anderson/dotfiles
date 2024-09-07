@@ -83,6 +83,17 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
+--
+--
+local alpha = function()
+  return string.format('%x', math.floor(255 * vim.g.transparency or 0.8))
+end
+
+vim.g.neovide_window_blurred = true
+vim.g.neovide_transparency = 0
+vim.g.transparency = 0.8
+vim.g.neovide_background_color = '#0f1117' .. alpha()
+vim.g.neovide_window_title_hidden = true
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -169,6 +180,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
